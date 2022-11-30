@@ -19,41 +19,11 @@ services:
       - "127.0.0.1:9094:9000"
     volumes:
       - /var/lib/docker/volumes/clickhouse01/_data:/etc/clickhouse-server
+      - /var/lib/docker/volumes/clickhouse02/_data:/var/lib/clickhouse
     depends_on:
       - zookeeper
-  clickhouse02:
-    image: clickhouse/clickhouse-server
-    container_name: clickhouse02
-    hostname: clickhouse02
-    networks:
-      clickhouse-network:
-        ipv4_address: 172.23.0.12
-    volumes:
-      - /var/lib/docker/volumes/clickhouse02/_data:/etc/clickhouse-server
-    depends_on:
-      - zookeeper
-  clickhouse03:
-    image: clickhouse/clickhouse-server
-    container_name: clickhouse03
-    hostname: clickhouse03
-    networks:
-      clickhouse-network:
-        ipv4_address: 172.23.0.13
-    volumes:
-      - /var/lib/docker/volumes/clickhouse03/_data:/etc/clickhouse-server
-    depends_on:
-      - zookeeper
-  clickhouse04:
-    image: clickhouse/clickhouse-server
-    container_name: clickhouse04
-    hostname: clickhouse04
-    networks:
-      clickhouse-network:
-        ipv4_address: 172.23.0.14
-    volumes:
-      - /var/lib/docker/volumes/clickhouse04/_data:/etc/clickhouse-server
-    depends_on:
-      - zookeeper
+
+
 
 networks:
   clickhouse-network:
